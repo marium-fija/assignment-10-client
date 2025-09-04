@@ -99,7 +99,7 @@ const Navbar = () => {
     </div>
     <div className='flex items-center gap-2'>
         <img className='w-12' src={logo} alt="" />
-        <p className='font-bold text-xl'>THING GREEN</p>
+        <p className='font-bold text-xl'>THINK GREEN</p>
     </div>
   </div>
   <div className="navbar-center hidden lg:flex">
