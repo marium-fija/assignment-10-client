@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router';
 import HomeLayout from '../layouts/HomeLayout';
 import Home from '../components/Home';
 import ErrorPage from '../pages/ErrorPage';
+import ExploreGardeners from '../pages/ExploreGardeners';
 
 const route = createBrowserRouter([
     {
@@ -17,7 +18,7 @@ const route = createBrowserRouter([
     },
     {
     path: "/explore-gardeners",
-    element: <h2>explore-gardeners</h2>,
+    element: <ExploreGardeners></ExploreGardeners>,
     },
     {
     path: "/browse-tips",
