@@ -109,7 +109,7 @@ const Navbar = () => {
   </div>
   <div className="navbar-end gap-2">
     {/* {!user ? ( */}
-          <NavLink to="/login" className="btn  text-white bg-lime-700">
+          <NavLink to="/auth/login" className="btn  text-white bg-lime-700">
             Login 
           </NavLink>
         {/* // ) : ( */}

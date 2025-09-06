@@ -4,6 +4,10 @@ import HomeLayout from '../layouts/HomeLayout';
 import Home from '../components/Home';
 import ErrorPage from '../pages/ErrorPage';
 import ExploreGardeners from '../pages/ExploreGardeners';
+import AuthLayout from '../layouts/AuthLayout';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
+
 
 const route = createBrowserRouter([
     {
@@ -13,6 +17,20 @@ const route = createBrowserRouter([
             {
                 path: "",
                 element:<Home></Home>,
+            },
+        ]
+    },
+    {
+        path: "/auth",
+        element: <AuthLayout></AuthLayout>,
+        children: [
+            {
+                path: "/auth/login",
+                element: <Login></Login>,
+            },
+            {
+                path: "/auth/register",
+                element: <Register></Register>,
             },
         ]
     },
