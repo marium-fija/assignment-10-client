@@ -7,6 +7,8 @@ import ExploreGardeners from '../pages/ExploreGardeners';
 import AuthLayout from '../layouts/AuthLayout';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import BrowseTips from '../pages/BrowseTips';
+import TipDetails from '../pages/TipDetails';
 
 
 const route = createBrowserRouter([
@@ -40,7 +42,11 @@ const route = createBrowserRouter([
     },
     {
     path: "/browse-tips",
-    element: <h2>browse-tips</h2>,
+    element: <BrowseTips></BrowseTips>,
+    },
+    {
+    path: "/browse-tips/:id",
+    element: <TipDetails></TipDetails>,
     },
     {
     path: "/share-tip",

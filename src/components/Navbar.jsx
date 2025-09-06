@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../assets/Logo.png'
 import Swal from 'sweetalert2';
 import { NavLink } from 'react-router';
+import { AuthContext } from '../provider/AuthProvider';
 
 const Navbar = () => {
+const { user, logOut } = useContext(AuthContext);
 
      const handleLogout = () => {
-    handleLogout()
+    logOut()
       .then(() => {
         Swal.fire({
           icon: "success",
@@ -57,7 +59,7 @@ const Navbar = () => {
           Browse Tips
         </NavLink>
       </li>
-      {/* {user && ( */}
+      {user && (
         <>
           <li>
             <NavLink
@@ -80,7 +82,7 @@ const Navbar = () => {
             </NavLink>
           </li>
         </>
-      {/* )} */}
+      )}
     </>
   );
     return (
@@ -108,11 +110,11 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end gap-2">
-    {/* {!user ? ( */}
+    {!user ? (
           <NavLink to="/auth/login" className="btn  text-white bg-lime-700">
             Login 
           </NavLink>
-        {/* // ) : ( */}
+         ) : (
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
@@ -120,7 +122,7 @@ const Navbar = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img src={logo} alt="" />
+                <img src={user.photoURL} alt="" />
               </div>
             </div>
             <ul
@@ -128,7 +130,7 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <p className="font-medium">fija</p>
+                <p className="font-medium">{user.displayName}</p>
               </li>
               <li>
                 <button onClick={handleLogout} className="btn bg-yellow-900 text-white">
@@ -137,7 +139,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-        {/* )} */}
+         )}
   </div>
 </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Register = () => {
     const { createUser } = useContext(AuthContext);
@@ -18,9 +19,34 @@ const Register = () => {
 
                 const userProfile = {
                     email,
-                    ...restFormData
+                    ...restFormData,
+                    creationTime: result.user?.metadata?.creationTime,
+                    lastSignInTime: result.user?.metadata?.lastSignInTime
                 }
 
+                fetch('http://localhost:3000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userProfile)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                      Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Your account is created.",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });  
+                    }
+                })
+            })
+            .catch(error => {
+                console.log(error);
+                
             })
 
     }
