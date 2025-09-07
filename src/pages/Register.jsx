@@ -15,8 +15,22 @@ const Register = () => {
 
         const { email, password, ...restFormData } = Object.fromEntries(formData.entries());
 
+
+        // Password Validation
+        const passwordValide = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])/;
+        if (password.length < 8 || !passwordValide.test(password)){
+           Swal.fire({
+                icon: "error",
+                title: "Invalid Password",
+                text: "Password must be at least 8 characters long and include 1 uppercase, 1 lowercase, and 1 special character."
+            });
+            return; 
+        }
+
+        // create user
         createUser(email, password)
             .then(result => {
+                // update profile
                 updateProfile(result.user, {
                     displayName : restFormData.name,
                     photoURL: restFormData.photo
@@ -28,6 +42,8 @@ const Register = () => {
                 })
                 });
 
+
+        // save to backend
                 const userProfile = {
                     email,
                     ...restFormData,

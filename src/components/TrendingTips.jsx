@@ -10,7 +10,7 @@ const TrendingTips = () => {
     }, []);
     return (
         <div>
-            <div className="max-w-11/12 mx-auto my-20">
+            <div className=" my-20">
       <h2 className="text-5xl font-bold text-center mb-10"> Trending Gardening Tips</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {tips.map((tip) => (

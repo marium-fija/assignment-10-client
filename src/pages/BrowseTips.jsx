@@ -3,23 +3,30 @@ import { Link } from 'react-router';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { FaEye } from "react-icons/fa";
+import Loading from './Loading';
 
 const BrowseTips = () => {
     const [tips, setTips] = useState([]);
+    const [loading, setLoading] = useState(true);
    
 
     useEffect(() => {
         fetch("http://localhost:3000/tips")
             .then((res) => res.json())
-            .then((data) => setTips(data));
+            .then((data) => {
+                setTips(data);
+                setLoading(false);
+            });
     }, []);
     return (
         <div>
         <header>
             <Navbar></Navbar>
         </header>
-
-            <div className="overflow-x-auto my-20 px-5">
+        {
+            loading ? <Loading></Loading> : (
+                
+                <div className="overflow-x-auto my-20 px-5">
                 <h2 className="text-5xl font-bold mb-10 text-center"> All Gardening Tips</h2>
                 <p class="text-gray-700 text-base mb-10 text-center">
                     Here you’ll find useful gardening tips . Explore helpful gardening tips shared by our community.
@@ -37,7 +44,9 @@ const BrowseTips = () => {
                     </thead>
                     {/* Table Body */}
                     <tbody>
-                        {tips.map((tip) => (
+                        {tips
+                        .filter(tip => tip.availability !== "Hidden")
+                        .map((tip) => (
                             <tr key={tip._id} className="hover:bg-green-50">
                                 <td>
                                     <img
@@ -58,6 +67,8 @@ const BrowseTips = () => {
                     </tbody>
                 </table>
             </div>
+            )}
+            
 
             <footer>
                 <Footer></Footer>

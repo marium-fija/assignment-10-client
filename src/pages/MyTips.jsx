@@ -11,12 +11,16 @@ import { MdTipsAndUpdates } from "react-icons/md";
 const MyTips = () => {
     const { user } = useContext(AuthContext);
     const [tips, setTips] = useState([]);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`http://localhost:3000/tips?email=${user?.email}`)
         .then((res) => res.json())
-        .then((data) => setTips(data));
+        .then((data) => {
+            setTips(data);
+            setLoading(false);
+        });
     }, [user]);
 
     const handleDelete = (id) => {
@@ -51,7 +55,10 @@ const MyTips = () => {
             </header>
           <div className="overflow-x-auto my-20 px-5">
                 <h2 className="text-5xl font-bold mb-10 text-center"> My Gardening Tips</h2>
-                <table className="table max-w-7xl mx-auto rounded-md shadow-2xl p-10">
+            {
+                loading ? <Loading></Loading> : (
+
+                    <table className="table max-w-7xl mx-auto rounded-md shadow-2xl p-10">
                     {/* Headings */}
                     <thead className="bg-gray-300">
                         <tr>
@@ -98,8 +105,10 @@ const MyTips = () => {
                         ))}
                     </tbody>
                 </table>
+                
+                )}    
+                
             </div>
-
             <footer>
                 <Footer></Footer>
             </footer>
