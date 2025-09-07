@@ -9,13 +9,13 @@ const Login = () => {
     const { login, googleLogin } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
-    console.log(location);
+    // console.log(location);
 
 
     const handleGoogleLogin = () => {
     googleLogin()
         .then(result => {
-            console.log(result.user);
+            // console.log(result.user);
             navigate(location?.state ? location.state : "/");
 
             const loginInfo = {
@@ -39,7 +39,7 @@ const Login = () => {
             });
         })
         .catch(error => {
-            console.error(error);
+            // console.error(error);
             setError(error.code);
         });
 };
@@ -52,7 +52,7 @@ const Login = () => {
 
         login(email, password)
             .then((result) => {
-                console.log(result.user);
+                // console.log(result.user);
                 navigate(`${location.state ? location.state : "/"}`);
 
                 const loginInfo = {

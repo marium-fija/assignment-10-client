@@ -13,7 +13,7 @@ const Register = () => {
     const handleGoogleRegister = () => {
     googleLogin()
         .then(result => {
-            console.log("Google User:", result.user);
+            // console.log("Google User:", result.user);
             setUser(result.user);
             navigate("/");
 
@@ -38,7 +38,9 @@ const Register = () => {
                 });
             });
         })
-        .catch(err => console.error(err));
+        // .catch(err =>
+        // //  console.error(err)
+        // );
 };
 
 
@@ -69,7 +71,7 @@ const Register = () => {
                     displayName: restFormData.name,
                     photoURL: restFormData.photo
                 }).then(() => {
-                    console.log("Profile updated:", result.user);
+                    // console.log("Profile updated:", result.user);
                     result.user.reload().then(() => {
                         setUser(result.user);
                         navigate("/");
@@ -106,10 +108,10 @@ const Register = () => {
                         }
                     })
             })
-            .catch(error => {
-                console.log(error);
+            // .catch(error => {
+            //     console.log(error);
 
-            })
+            // })
 
     }
     return (
