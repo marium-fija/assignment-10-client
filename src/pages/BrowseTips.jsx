@@ -60,7 +60,7 @@ const BrowseTips = () => {
                                 <td>
 
 
-                                    <Link to={`/browse-tips/${tip._id}`} className="btn btn-sm rounded-full bg-green-600 text-white hover:bg-green-700" ><FaEye /></Link>
+                                    <Link to={`/browse-tips/${tip._id}`} className="btn btn-sm rounded-full bg-green-600 text-white hover:bg-green-700" ><FaEye /> see more</Link>
                                 </td>
                             </tr>
                         ))}
