@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, setUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    const handleSignUp = e => {
+    const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
@@ -15,7 +17,16 @@ const Register = () => {
 
         createUser(email, password)
             .then(result => {
-                console.log(result.user);
+                updateProfile(result.user, {
+                    displayName : restFormData.name,
+                    photoURL: restFormData.photo
+                }).then(() =>{
+                    console.log("Profile updated:", result.user);
+                result.user.reload().then (() => {
+                    setUser(result.user);
+                    navigate("/");  
+                })
+                });
 
                 const userProfile = {
                     email,
@@ -40,7 +51,8 @@ const Register = () => {
                                 title: "Your account is created.",
                                 showConfirmButton: false,
                                 timer: 1500
-                            });  
+                            });
+                            
                     }
                 })
             })
@@ -57,7 +69,7 @@ const Register = () => {
                     <h2 className="font-semibold text-2xl text-center">
                         Register your account
                     </h2>
-                    <form onSubmit={handleSignUp} className="card-body">
+                    <form onSubmit={handleRegister} className="card-body">
                         <fieldset className="fieldset">
                             {/* Name  */}
                             <label className="label">Name</label>
@@ -105,7 +117,6 @@ const Register = () => {
                                 placeholder="Password"
                                 required
                             />
-
                             <button type="submit" className="btn btn-neutral mt-4">
                                 Register
                             </button>
