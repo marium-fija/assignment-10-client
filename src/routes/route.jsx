@@ -11,6 +11,7 @@ import BrowseTips from '../pages/BrowseTips';
 import TipDetails from '../pages/TipDetails';
 import ShareTips from '../pages/ShareTips';
 import MyTips from '../pages/MyTips';
+import UpdateTip from '../components/UpdateTip';
 
 
 const route = createBrowserRouter([
@@ -57,6 +58,10 @@ const route = createBrowserRouter([
     {
     path: "/my-tips",
     element: <MyTips></MyTips>
+    },
+    {
+    path: "/update-tip/:id",
+    element: <UpdateTip></UpdateTip>,
     },
     {
     path: "/*",
