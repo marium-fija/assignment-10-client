@@ -25,7 +25,7 @@ const Register = () => {
                 lastSignInTime: result.user?.metadata?.lastSignInTime
             };
 
-            fetch("http://localhost:3000/users", {
+            fetch("https://assignment-10-server-seven-wine.vercel.app/users", {
                 method: "POST",
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify(userProfile)
@@ -87,7 +87,7 @@ const Register = () => {
                     lastSignInTime: result.user?.metadata?.lastSignInTime
                 }
 
-                fetch('http://localhost:3000/users', {
+                fetch('https://assignment-10-server-seven-wine.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

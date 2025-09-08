@@ -13,7 +13,7 @@ const UpdateTip = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/tips/${id}`)
+    fetch(`https://assignment-10-server-seven-wine.vercel.app/tips/${id}`)
     .then((res) => res.json())
     .then((data) => setTip(data));
   }, [id]);
@@ -36,7 +36,7 @@ const handleUpdate = (e) => {
       },
 };
 
-fetch(`http://localhost:3000/tips/${id}`, {
+fetch(`https://assignment-10-server-seven-wine.vercel.app/tips/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(updatedTip),

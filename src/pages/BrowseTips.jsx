@@ -11,7 +11,7 @@ const BrowseTips = () => {
    
 
     useEffect(() => {
-        fetch("http://localhost:3000/tips")
+        fetch("https://assignment-10-server-seven-wine.vercel.app/tips")
             .then((res) => res.json())
             .then((data) => {
                 setTips(data);

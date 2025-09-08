@@ -8,7 +8,7 @@ const ExploreGardeners = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/gardeners")
+    fetch("https://assignment-10-server-seven-wine.vercel.app/gardeners")
       .then(res => res.json())
       .then(data => {
         setGardeners(data);

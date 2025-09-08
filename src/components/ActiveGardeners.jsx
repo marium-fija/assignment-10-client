@@ -4,7 +4,7 @@ const ActiveGardeners = () => {
     const [gardeners, setGardeners] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3000/gardeners")
+        fetch("https://assignment-10-server-seven-wine.vercel.app/gardeners")
             .then(res => res.json())
             .then(data => {
                 const activeOnly = data.filter(gardener => gardener.status === "Active");

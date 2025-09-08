@@ -25,7 +25,7 @@ const ShareTips = () => {
      };
 
 
-     fetch ("http://localhost:3000/tips", {
+     fetch ("https://assignment-10-server-seven-wine.vercel.app/tips", {
         method: "POST",
         headers: {"Content-Type": "application/json" },
         body: JSON.stringify(tipData),

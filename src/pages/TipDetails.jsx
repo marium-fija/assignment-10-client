@@ -9,7 +9,7 @@ const TipDetails = () => {
     const [tip, setTip] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/tips/${id}`)
+        fetch(`https://assignment-10-server-seven-wine.vercel.app/tips/${id}`)
         .then((res) => res.json())
         .then((data) => setTip(data));
     }, [id]);

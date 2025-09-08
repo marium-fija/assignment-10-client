@@ -15,7 +15,7 @@ const MyTips = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/tips?email=${user?.email}`)
+        fetch(`https://assignment-10-server-seven-wine.vercel.app/tips?email=${user?.email}`)
         .then((res) => res.json())
         .then((data) => {
             setTips(data);
@@ -35,7 +35,7 @@ const MyTips = () => {
     })
         .then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/tips/${id}`, {
+                fetch(`https://assignment-10-server-seven-wine.vercel.app/tips/${id}`, {
                     method: "DELETE", 
                 })
                 .then((res) => res.json())
