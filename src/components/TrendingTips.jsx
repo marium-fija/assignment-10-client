@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Loading from '../pages/Loading';
 
 const TrendingTips = () => {
     const [tips, setTips] = useState([]);
@@ -8,6 +9,10 @@ const TrendingTips = () => {
         .then((res) => res.json())
         .then((data) => setTips(data));
     }, []);
+
+    if (!tips) {
+      return <Loading></Loading>
+    }
     return (
         <div>
             <div className=" my-20">

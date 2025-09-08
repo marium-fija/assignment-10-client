@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Loading from '../pages/Loading';
 
 const ActiveGardeners = () => {
     const [gardeners, setGardeners] = useState([]);
@@ -9,8 +10,13 @@ const ActiveGardeners = () => {
             .then(data => {
                 const activeOnly = data.filter(gardener => gardener.status === "Active");
                 setGardeners(activeOnly);
+                
             });
     }, []);
+
+    if (!gardeners) {
+        return <Loading></Loading>
+    }
 
     return (
         <div className='mt-20'>
